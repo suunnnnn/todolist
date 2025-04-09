@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.">
+    <style>
+        .note-list {css
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            border-top: 1px solid #e0d8c4;
+            padding-top: 15px;
+        }
+
+        .note-list li {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .note-list li:hover {
+            background-color: #f0e6d8;
+        }
+
+        .note-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .label {
+            display: inline-block;
+            background-color: #d4cbbd;
+            color: #554433;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            margin-bottom: 3px;
+        }
+
+        .filter-section {
+            margin-top: 30px;
+        }
+
+        .filter-section h3 {
+            font-size: 1.6em;
+            color: #554433;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #dcd0c0;
+            padding-bottom: 8px;
+        }
+
+        .filter-labels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .filter-labels button {
+            background: none;
+            border: 1px solid #d4cbbd;
+            color: #554433;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 0;
+            margin-bottom: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .filter-labels button.active {
+            background-color: #a78e6c;
+            color: white;
+            border-color: #a78e6c;
+        }
+
+        .create-label {
+            display: flex;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .create-label input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #d4cbbd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .create-label button {
+            background-color: #a78e6c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .label-assignment {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .label-assignment label {
+            font-size: 1em;
+            color: #554433;
+        }
+
+        .label-assignment select {
+            padding: 8px;
+            border: 1px solid #d4cbbd;
+            border-radius: 4px;
+            font-size: 1em;
+            flex-grow: 1;
+        }
+
+        .task-management li .labels-container {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#tasks" data-page="tasks"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="#calendar" data-page="calendar"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                    <li><a href="#finished" data-page="finished"><i class="fas fa-check-double"></i> Finished Projects</a></li>
+                    <li><a href="#notes" data-page="notes"><i class="fas fa-sticky-note"></i> Notes</a></li>
+                    <li><a href="#settings" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="filter-section">
+                <h3>Filter by Label</h3>
+                <div id="filter-labels" class="filter-labels">
+                    </div>
+            </div>
+            <div class="saved-notes">
+                <h3>Saved Notes</h3>
+                <ul id="note-list" class="note-list">
+                    </ul>
+            </div>
+        </aside>
+        <main class="content">
+            <section id="tasks-page" class="page active">
+                <header class="app-header">
+                    <h1><i class="fas fa-tasks"></i> My Tasks</h1>
+                </header>
+                <div class="task-management">
+                    <div class="create-label">
+                        <input type="text" id="new-label-name" placeholder="Create new label...">
+                        <button id="create-label-btn"><i class="fas fa-tag"></i> Create Label</button>
+                    </div>
+                    <div class="input-section">
+                        <input type="text" id="new-task-text" placeholder="Add a new task...">
+                        <input type="text" id="new-task-date" placeholder="Set Due Date (click calendar)" readonly>
+                        <div class="label-assignment">
+                            <label for="task-labels">Labels:</label>
+                            <select id="task-labels" multiple>
+                                </select>
+                        </div>
+                        <button id="add-task-btn"><i class="fas fa-plus"></i> Add Task</button>
+                    </div>
+                    <div class="search-section">
+                        <input type="text" id="search-tasks" placeholder="Search tasks...">
+                        <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                    <div class="today-tasks">
+                        <h2>Today's Assignments</h2>
+                        <ul id="today-tasks-list">
+                            </ul>
+                    </div>
+                    <div class="future-tasks">
+                        <h2>Future Tasks</h2>
+                        <ul id="future-tasks-list">
+                            </ul>
+                    </div>
+                    <div class="pending-tasks">
+                        <h2>Pending</h2>
+                        <ul id="pending-tasks">
+                            </ul>
+                    </div>
+                    <div class="completed-tasks">
+                        <h2>Completed</h2>
+                        <ul id="completed-tasks">
+                            </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="calendar-page" class="page">
+                <header class="page-header">
+                    <h1><i class="fas fa-calendar-alt"></i> Calendar</h1>
+                </header>
+                <div id="calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <h2 id="current-month"></h2>
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div id="calendar-grid">
+                        </div>
+                </div>
+            </section>
+
+            <section id="finished-page" class="page">
+                <header class="page-header">
+                    <h1><i class="fas fa-check-double"></i> Finished Projects</h1>
+                </header>
+                <ul id="finished-projects-list">
+                    <li>Project Alpha - Completed on 2025-03-15</li>
+                    <li>Project Beta - Completed on 2025-03-28</li>
+                    </ul>
+            </section>
+
+            <section id="notes-page" class="page active">
+                <header class="page-header">
+                    <h1><i class="fas fa-sticky-note"></i> Notes</h1>
+                </header>
+                <div class="note-editor">
+                    <input type="text" id="note-title-input" placeholder="Note Title">
+                    <textarea id="notes-content" placeholder="Start writing your note..."></textarea>
+                    <button id="save-note-btn"><i class="fas fa-save"></i> Save Note</button>
+                </div>
+            </section>
+
+            <section id="settings-page" class="page">
+                <header class="page-header">
+                    <h1><i class="fas fa-cog"></i> Settings</h1>
+                </header>
+                <p>NO Settings hahaha</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
