@@ -1,0 +1,464 @@
+/* style.css */
+
+body {
+    font-family: 'EB Garamond', serif;
+    background-color: #f8f8f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+    background-color: #f0e6d8;
+    color: #554433;
+    width: 220px;
+    padding: 25px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-header h2 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #dcd0c0;
+    padding-bottom: 12px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li a {
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #554433;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.1em;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #dcd0c0;
+    color: #705e48;
+}
+
+.sidebar nav ul li a i {
+    margin-right: 10px;
+}
+
+.filter-section {
+    margin-top: 30px;
+}
+
+.filter-section h3 {
+    font-size: 1.6em;
+    color: #554433;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dcd0c0;
+    padding-bottom: 8px;
+}
+
+.filter-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.filter-labels button {
+    background: none;
+    border: 1px solid #d4cbbd;
+    color: #554433;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-labels button.active {
+    background-color: #a78e6c;
+    color: white;
+    border-color: #a78e6c;
+}
+
+.saved-notes {
+    margin-top: 30px;
+}
+
+.saved-notes h3 {
+    font-size: 1.6em;
+    color: #554433;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dcd0c0;
+    padding-bottom: 8px;
+}
+
+.note-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.note-list li {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.note-list li:last-child {
+    border-bottom: none;
+}
+
+.note-list li:hover {
+    background-color: #f0e6d8;
+}
+
+.note-title-sidebar {
+    font-weight: bold;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-header h1 {
+    font-size: 2.8em;
+    color: #554433;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e0d8c4;
+    padding-bottom: 18px;
+    font-weight: 400;
+}
+
+.task-management .create-label {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.task-management .create-label input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #d4cbbd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.task-management .create-label button {
+    background-color: #a78e6c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.task-management .input-section,
+.task-management .search-section {
+    display: flex;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.task-management input[type="text"] {
+    flex-grow: 1;
+    padding: 14px;
+    border: 1px solid #d4cbbd;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-family: inherit;
+}
+
+.task-management button#add-task-btn,
+.task-management button#search-btn {
+    background-color: #a78e6c;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+}
+
+.task-management button#add-task-btn:hover,
+.task-management button#search-btn:hover {
+    background-color: #8c7558;
+}
+
+.task-management button i {
+    margin-right: 8px;
+}
+
+.task-management .label-assignment {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-management .label-assignment label {
+    font-size: 1em;
+    color: #554433;
+}
+
+.task-management .label-assignment select {
+    padding: 8px;
+    border: 1px solid #d4cbbd;
+    border-radius: 4px;
+    font-size: 1em;
+    flex-grow: 1;
+}
+
+.task-management .today-tasks,
+.task-management .future-tasks,
+.task-management .pending-tasks,
+.task-management .completed-tasks {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #e0d8c4;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.task-management h2 {
+    font-size: 1.8em;
+    color: #554433;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e8e3da;
+    padding-bottom: 10px;
+}
+
+.task-management ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-management li {
+    background-color: #fff;
+    padding: 12px 18px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1em;
+}
+
+.task-management li:last-child {
+    border-bottom: none;
+}
+
+.task-management li span {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.task-management .task-actions button {
+    background: none;
+    border: none;
+    color: #a78e6c;
+    cursor: pointer;
+    margin-left: 12px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.task-management .task-actions button:hover {
+    color: #8c7558;
+}
+
+.task-management .completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.task-management .due-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-left: 10px;
+}
+
+.task-management li .labels-container {
+    margin-top: 5px;
+}
+
+.task-management li .labels-container .label {
+    display: inline-block;
+    background-color: #d4cbbd;
+    color: #554433;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+#calendar {
+    background-color: #fff;
+    border: 1px solid #e0d8c4;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #705e48;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.calendar-header h2 {
+    font-size: 1.6em;
+    color: #554433;
+    margin: 0;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-grid div {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #f0e6d8;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.calendar-grid div:hover {
+    background-color: #e8e3da;
+}
+
+.calendar-grid .inactive {
+    color: #ccc;
+    cursor: default;
+    background-color: transparent;
+}
+
+.calendar-grid .today {
+    background-color: #a78e6c;
+    color: white;
+}
+
+.calendar-grid .calendar-day {
+    cursor: pointer;
+}
+
+#finished-projects-list {
+    list-style: none;
+    padding: 0;
+}
+
+#finished-projects-list li {
+    background-color: #fff;
+    padding: 12px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+}
+
+#finished-projects-list li:last-child {
+    border-bottom: none;
+}
+
+#notes-page .page-header h1 {
+    
+}
+
+.note-editor {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0d8c4;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#note-title-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #d4cbbd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+#notes-content {
+    width: 100%;
+    min-height: 300px;
+    padding: 15px;
+    border: 1px solid #d4cbbd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#save-note-btn {
+    background-color: #a78e6c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+}
+
+#save-note-btn:hover {
+    background-color: #8c7558;
+}
+
+#save-note-btn i {
+    margin-right: 8px;
+}
+
+#settings-page .page-header h1 {
+
+}
